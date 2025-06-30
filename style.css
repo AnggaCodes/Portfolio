@@ -1,0 +1,1003 @@
+/*1.library font css untuk styleing html*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+    *{ /*3.Aplikasiin semua aturan di dalam ini ke SEMUA elemen di website. */
+    padding: 0; 
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    scroll-behavior: smooth;
+    text-decoration: none;
+}
+:root{      /*4. bikin VARIABLE GLOBAL*/
+    --text-color:#f5f5f5; /* Warna teks utama (putih sangat terang) */
+    --hover-color:#12f7ff; /* Warna saat hover (cyan neon) */
+    --bg-color:#250821; /* Warna background utama (ungu gelap) */
+    --secon-bg-color:#292e33; /* Warna background sekunder (abu-abu gelap) */
+    --big-font:2.5rem; /* Ukuran font besar */
+    --normal-font:2rem; /* Ukuran font normal (mungkin typo, seharusnya normal-font) */
+    --neon-box-shadow:0 0 .5rem #12f7ff; /* Efek shadow untuk elemen neon */
+    --h2-font:3rem; /* Ukuran font untuk heading h2 */
+    --font-neon-text-shadow:0 0 10px rgba(18,247,255,0.3),
+    0 0 20px rgba(18,247,255,0.3), /* Efek text shadow neon multi-layer */
+    0 0 30px rgba(18,247,255,0.3),
+    0 0 40px rgba(18,247,255,0.3),
+    0 0 70px rgba(18,247,255,0.3),
+    0 0 80px rgba(18,247,255,0.3),
+    0 0 90px rgba(18,247,255,0.3),
+    0 0 100px rgba(18,247,255,0.3),
+    0 0 150px rgba(18,247,255,0.3);
+}
+
+::-webkit-scrollbar{  /*144. Bikin Scrollbar warna neon*/
+    height: 0;
+    width: .5rem;
+}
+
+::-webkit-scrollbar-track{
+    background: var(--secon-bg-color);
+}
+
+::-webkit-scrollbar-thumb{
+    background: var(--hover-color);
+    border-radius: 5rem;
+}
+
+body{
+    font-family: "Poppins", sans-serif;
+    background-color: var(--bg-color);  /*5. ubah warna text dan background*/
+    color: var(--text-color);
+}
+     /* pemaggilan variable */
+
+header{   /*6.Atur style pada header*/
+    position: fixed;  /*147.Bikin nav selalu ngambang*/
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-bottom: 1px solid transparent;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /*menengahi header*/
+    width: 100%;
+    padding: 20px 10%;   /*memberi padding pada ANGGA*/
+}
+
+header.sticky{                 /*149. Bikin sticky header ada border bottomnya dan slalu mengikuti scrollbar*/
+    background: var(--bg-color); /*NOTE MUHIM: tidak boleh ada spaci antara selector .sticky dengan header karena .sticky bukan class turunan langsung dari kode html header melainkan class yg ditambahkan menggunakan js setelah 50px scroll*/
+    border-bottom: 1px solid var(--secon-bg-color);
+    padding: 12px 10%;
+}
+
+.logo{ /*7.atur style pada ANGGA*/
+    font-size: 26px;
+    font-weight: 700;    /*mengatur ukuran ANGGA*/
+    letter-spacing:1px;
+}
+
+span{
+    color: var(--hover-color);  /*8. memberi warna pada A*/
+}
+
+.navlist{
+    display: flex; /*9. membuat header/navigation bar jadi 1 baris*/
+}
+
+.navlist a{   /*180. INI AKAN MEMBERIKAN EFEK ANIMASI MUNCUL 1 PERSATU SETIAP SECTION PADA NAVLIST*/
+    display: inline-block;
+    color: var(--text-color);
+    font-weight: 500;           /*10.mengatur jarak antar nav dan ketebalan font dan juga warnanya*/
+    padding: 10px 20px;
+    animation: slideAnimation 1s ease forwards; /*177. Tambahkan efek animasi untuk .navlist a*/
+    animation-delay: calc(.3s * var(--i)); /*179. berikan animation-delay */
+    opacity: 0; /*180. beri opacity 0 dan display inline-block pada navlist a*/
+} 
+.navlist a:hover{
+    color: var(--hover-color);
+    text-shadow: 0 0 10px rgba(18,247,255,0.6),
+    0 0 20px rgba(18,247,255,0.6), /* Efek text shadow neon multi-layer */
+    0 0 30px rgba(18,247,255,0.6), /*11. memberi efek berubah warna ketika mouseover*/
+    0 0 40px rgba(18,247,255,0.6),
+    0 0 70px rgba(18,247,255,0.6),
+    0 0 80px rgba(18,247,255,0.6),
+    0 0 90px rgba(18,247,255,0.6),
+    0 0 100px rgba(18,247,255,0.6),
+    0 0 150px rgba(18,247,255,0.6);
+}
+
+.navlist a.active{  /*146. */
+    color: var(--hover-color);
+}
+
+#menu-icon{
+    font-size: 1.8rem;
+    z-index: 10001;
+    cursor: pointer;
+    margin-left: 25px;                  /*13. mengatur warna bg dan icon menu juga ukurannya*/
+    background: var(--hover-color);
+    border-radius: 3px;
+    color: var(--secon-bg-color);  
+    display: none;   /*14. menghilangkan sementara icon menu*/
+}
+
+section{
+    padding:100px 10%; /*21. mengatur padding atau jarak dari sisi tepi section dengan web*/
+}
+.home{
+    min-height: 100vh; /*22. BELOM PAHAM yg penting merapikan home section dan ngubah img jadi kekanan*/
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+    grid-gap: 4em;
+}
+.home-content{
+    max-width: 600px; /*23.BELOM PAHAM keknya mengatur lebar class home content*/
+}
+.home-content h1{
+    font-size: var(--big-font);
+    font-weight: 700; /*24. mengatur ukuran dan ketebalan font class home content*/
+}
+.kecilkan{  /* BELOM PAHAM BETUL INI*/
+    width: 400px; /* Sesuaikan ukuran */
+  height: auto;
+  float: left; /* Mengapung ke kiri */
+  margin-right: 20px; /* Jarak antara gambar dan teks */
+  shape-outside: margin-box; /* Untuk text wrapping yang lebih rapi */
+}
+
+.change-text{
+    font-size: 1.5rem;  /*24.mengatur ukuran dan tebal font class change text*/
+    font-weight: 600;
+}
+
+.change-text h3{
+    display: inline-flex;  /*26.BELOM PAHAM keknya mengtaur jarak dan tampilan class change text*/
+    margin: 0;
+    vertical-align: top;
+}
+
+.change-text h3 .word{
+    position: absolute;   /*27. membuat semua kata dalam class word menjadi 1 posisi bertumpuk*/
+    display: flex;
+    opacity: 0;          /*28. menghilangkan sementara text class word*/
+}
+
+.change-text h3 .word .letter{ /*30. GATAU NGAPAIN text class letter*/
+    transform-origin: center center 25px;
+}
+.change-text h3 .word .letter.out{ /*30. GATAU NGAPAIN text class letter*/
+    transform: rotateX(90deg);
+    transition: 0.32s cubic-bezier(0.6,0,0.7,0.2);
+}
+.change-text h3 .word .letter.in{ /*30. GATAU NGAPAIN text class letter*/
+    transition: 0.38 ease;
+}
+.change-text h3 .word .letter.behind{
+    transform: rotateX(-90deg);
+}
+.home-content p{
+    color: #bdbdbd;   /*31. kasih warna dan space baris home content*/
+    line-height: 1.6;
+}
+.info-box{
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;       /*32. atur style class info box*/
+    width: 300px;
+    margin: 1rem 0 2rem;
+}
+.info-box h5{
+    font-weight: 600;
+    color: var(--text-color);  /*33.atur style h5 dalam class infobox*/
+    font-size: 1rem; 
+}
+
+.info-box span{
+    font-size: .9rem;
+    color: #bdbdbd; /*34. */
+}
+
+.btn-box{               /*35. */
+    display: flex;
+    justify-content: space-between;
+    width: 320px;
+    height: 45px;
+}
+
+.btn-box .btn{      /*140. Hapus selector a yg sebelumnya ada sebelah paling kiri semua selector*/
+    display: inline-flex;   /*36. */
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 100%;
+    background: var(--hover-color);
+    color: var(--bg-color);
+    font-size: 1rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+    transition: .6s;
+    box-shadow: var(--neon-box-shadow);
+    border-radius: 5px;
+    position: relative;   /*38. ubah jadi relative biar nyamping gak kebawah*/
+    z-index: 1;
+    border: 2px solid var(--hover-color);  /*45.GATAU NGAPAIN*/
+}
+.btn:hover{
+    color: var(--hover-color);  /*42. kasih warna font ketika mouseover biar tetep keliatan pas dimouseover*/
+}
+
+.btn::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--bg-color);   /*37. ubah button jadi merah*/   /*40. nubah lg jadi biru*/
+    width: 0;     /*42. widthnya ubah dari 100 jadi 0*/
+    height: 100%;
+    z-index: -1;    /*39. ubah z-index font dan bg supaya font layernya diatas bg*/
+    transition: .4s;
+}
+
+.btn:hover::before{  /*BEFORE NIH APA COY*/
+    width: 100%;  /*41. */
+}
+
+.btn:nth-child(2){ /*43. merubah background element kedua a class btn*/
+    background: var(--bg-color);
+    color: var(--hover-color);
+}
+
+.btn:nth-child(2):hover{
+    color: var(--bg-color);
+}
+
+.btn:nth-child(2)::before{ /*44. mengatur warna bg sebelum mouseover TAPI BELOM TERLALU PAHAM*/
+    background: var(--hover-color);
+}
+
+.social-icons{
+    margin-top: 8rem;     /*45. Rapikan dan atur jarak antar social icon*/
+    display: flex;
+    justify-content: space-between;
+    width: 220px;
+    height: 40px;
+}
+
+.social-icons a{
+    display: inline-flex;  /*46. merapikan dan atur tag a dalam class social icons */
+    width: 50px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-color);
+    color: var(--hover-color);
+    border: 2px solid var(--hover-color); /*47. Kasih border untuk social icons*/
+    transition: .6s;
+    box-shadow: 0 0 0.3rem #12f7ff; /*48. kasih shadow untuk border icons*/
+    border-radius: 5px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.social-icons a i{       /*ATUR UKURAN ICONS TERNYATA PAKE FONT-SIZE*/
+    font-size: 1.5rem;  /*49. perbesar sedikit ukuran social icons*/
+}
+
+.social-icons a:hover{
+    color: var(--bg-color); /*50.Buat icon berubah warna ketika mouseover*/
+}
+
+.social-icons a::before{ /*51. GAK PAHAM tapi keknya atur tampilan icon sebelum mouseover*/
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;    /*52. atur prosentase lebar dan tinggi background icon*/
+    height: 100%;
+    background: var(--hover-color);
+    transition: .6s;
+    z-index: -1;
+}
+.social-icons a:hover::before{ 
+    width: 100%;  /*53.Atur lebar background setelah mouseover */
+}
+
+.home-image{
+    position: relative;  /*54. MBOH Atur posis img keknya TAPI GAADA YG BERUBAH*/
+}
+
+.img-box{
+    text-align: center;
+}
+.img-box img{           /*55. GAK TERLALU PAHAM tapi gambar jadi agak naek sikit sejajar sama icons*/
+    width: 100%;
+    max-width: 450px; 
+    height: auto;
+}
+.liquid-shape{
+    position: absolute;  /*62.Atur dan sesuaikan blobs agar berada dibelakang gambar*/
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top: 10%;
+}
+
+.liquid-shape:nth-child(2){ /*64.blur blobs yg kedua untuk menciptakan efek glow*/
+    filter: blur(50px);
+}
+
+/*-------------------------------About Section CSS-----------------------------------------------------------*/
+/*66.Atur about class about ke samping gambar*/
+.about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 2em;                     /*BELOM PAHAM Propertynya*/
+    background: var(--secon-bg-color);
+}
+.about .img-about{          /*67.Atur ukuran dan posisi gambar*/
+    text-align: center;
+    position: relative;
+}
+
+.about .img-about img{
+    max-width: 400px;
+    height: auto;
+}
+.about-content span{
+    color: #fdfdfd;  /*68.Let me introduce jadiin abu-abu dan kasi ukuran font yg pas*/
+    font-size: .8rem;
+    font-weight: 200;
+    letter-spacing: 2px;
+    text-transform: uppercase; /*Yang Ini BELOM PAHAM JUGA*/
+}
+
+.about-content h2{           /*69. Ubah warna dan ukuran dan tebal font About Me*/
+    color: var(--hover-color);
+    font-weight: 700;
+    font-size: var(--normal-font);
+}
+
+.about-content h3{       /*70. atur tebal dan ukuran dan margin kebawah h3*/
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: .2rem;
+}
+
+.about-content p{
+    color: #fdfdfd;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+}
+
+.info-about1,
+.info-about2,          /*71.Atur Ketiga class berisi Pencapaian2 dibawah Gambar sekaligus tapi GAK PAHAM DIAPAIN*/
+.info-about3{
+    background: var(--bg-color);
+    font-size: .5rem;
+    position: absolute;
+    padding: 10px;
+    width: 90px;
+    height: 90px;
+    border-radius: 69% 31% 66% 34% / 21% 30% 70% 79%;
+    display: block;
+    box-shadow: var(--neon-box-shadow);
+    border: 1px solid var(--hover-color);
+    outline: 2px solid var(--bg-color);
+    z-index: 100;
+    animation: morph 6s linear infinite; /*72. Buat border untuk 3 class itu, beri warna neon trus Animasikan*/
+}
+
+.info-about1{  /*73.Pindahin info about1 ke atas kiri, 2 ke kanan atas, 3 ke kanan bawah gambar*/
+    left: 10%;
+    top: 34%;
+}
+.info-about2{
+    left: 66%;
+    top: 15%;
+}
+.info-about3{
+    left: 61%;
+    top: 70%;
+}
+
+.img-about span{       /*74. Atur font span*/
+    color: var(--hover-color);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* ------------------------------------------76. Service Section CSS---------------------------------------------- */
+.main-text{                     /*77.Ketengah-atasin what should i do DAN our services*/
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--hover-color);
+}
+
+.main-text h2{  
+    font-weight: 700;
+    font-size: var(--normal-font); /*78. pertebal OUR SERVICES*/
+}
+
+.main-text span{
+    color: #fdfdfd;
+    font-size: .8rem;
+    font-weight: 200;       /*79. Atur ukuran, ketebalan font, dll what should i do*/
+    letter-spacing: 2px; /*atur jarak antar huruf*/
+    text-transform: uppercase;
+}
+
+.section-services{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    grid-gap: 2rem;  /*80. Atur jarak antar div dengan class sevice box*/
+}
+
+.section-services .service-box{
+    flex: 1 1 18rem;
+    padding: 2rem 1rem 1rem;             /*81.Bikin bagan utuk tiap service box*/
+    text-align: center;
+    background: var(--secon-bg-color);
+    transition: transform .4s;
+    border-radius: 10px;   /*Tingkat Kebulatan sudut2 bagan*/
+}
+
+.service-btn{
+    width: auto;               /*83. Jadiin komentar sementara, inspect read more terus ganti width pada btn box jadi 266px*/
+    justify-content: center;   /*82. Ubah ukuran bagan jadi sama rata dan 1 baris*/
+}
+
+.service-box:hover{
+    transform: translateY(-.7rem);  /*83. Bikin box jadi geser keatas dikit ketika MOUSEOVER*/
+}
+
+.service-icon{
+    border: 2px solid var(--hover-color); /*84. Kasih border, atur jarak kasih background, atur ukuran icons*/
+    padding: 2rem;
+    background: var(--bg-color);
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+    border-radius: 50%;     /*sudut 50% jadi Buled*/
+    position: relative;
+    color: var(--hover-color);     /*kasih warna, kasih shadow, kasih outline*/
+    box-shadow: var(--neon-box-shadow);
+    outline: 3px solid var(--bg-color);
+}
+
+.service-box h3{
+    margin-top: 10px;   /*85.Atur margin atas dan ukuran h3*/
+    font-size: 1.5rem;
+}
+
+.service-box p{
+    margin: .5rem 0 1.5rem 0;      /*86. Atur margin p dari border, atur tebal, jarak huruf, warna, dan jarah antar baris text*/
+    font-weight: 300;
+    letter-spacing: 1px;
+    color: #bdbdbd;
+    line-height: 1.6;
+}
+
+/* ------------------------------------------90. Skills Section CSS---------------------------------------------- */
+.skills{
+    background: var(--secon-bg-color);
+}
+
+.skill-main{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);  /*Pindahin Sub Judul kedua jadi sebelah kanan*/
+    grid-row-gap: 30px;
+    grid-column-gap: 50px;
+}
+
+.skill-bar{
+    margin-bottom: 2.3rem;  /*91. Kasih jarak bawah antar skill bar*/
+}
+
+.skill-main h3{
+    margin-bottom: 2rem;   /*92. Ubah ukuran sub judul dan ketengahin dan kasih margin bawah*/
+    font-size: var(--normal-font);
+    text-align: center;
+}
+
+.skill-left .skill-bar .info{
+    display: flex;
+    justify-content: space-between;   /*93. Kasih jarak antara tag p di div class info, kasih ketengah, kasih jarak dari kiri*/
+    align-items: center;
+    padding: 0 10px;  /*kasih jarak dari kiri*/
+}
+
+.skill-left .skill-bar .bar{
+    width: 100%;
+    height: 10px;
+    background-color: var(--bg-color);  /*94. Bikin bar prosentase skill*/
+    border-radius: 25px;
+    margin-top: 10px;
+    position: relative;   /*96. ubah bar jadi relative positionnya biar sejajar sama span*/
+}
+
+.skill-bar .bar span{
+    width: 50%;
+    height: 100%;
+    position: absolute;          /*95. Bikin span ke kiri tapi BELOM TAU FUNGSI PASTI POSITION*/
+    left: 0;
+    background: var(--hover-color);  /*98. text sudah dihapus hanya ada background clay dgn border radius 25 px dan kasih efek neon*/ 
+    border-radius: 25px;   /*sudut bordernya disamain kek barnya */
+    box-shadow: var(--neon-box-shadow);
+}
+
+.skill-bar .bar .html{            /*99. Kasih width span sesuai prosentase skill*/
+    width: 72%;      
+    animation: html 4s;            
+}
+
+.skill-bar .bar .figma{
+    width: 90%;
+    animation: figma 5s;          /*100. Kasih animation dan durasi animasi lalu bikin @keyframes untuk tiap2 skill*/
+}
+
+.skill-bar .bar .javascript{
+    width: 80%;
+    animation: javascript 4s;     
+}
+
+.skill-bar .bar .css{
+    width: 90%;
+    animation: css 5s;
+}
+
+/* skill-right */
+.professional{
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /*102. Bagi text jadi 2 sisi kiri 2 sisi kanan*/
+}
+
+.box{
+    margin: 10px 0;
+    flex: 1 1 15rem;
+    position: relative;  /*107. tambah attribut position relative*/
+}
+
+.box .text{
+    text-align: center;
+    color: #fff;         /*105. Atur style font textnya*/
+    font-size: 1rem;
+}
+
+.box .text big{
+    font: 400;
+    letter-spacing: 1px;    /*106. Atur style text prosentase*/
+    position: absolute;
+    top: 40%;             /*108. Ketengah kotakin text2nya*/
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.box .text small{
+    display: block;       /*109. atur display dan tebal font text teamwork*/
+    font-weight: 600;
+}
+
+.circle{
+    width: 100%;
+    height: 120px;             /*103. Bikin class circle jadi di 4 kotak dan textnya jadi dikiri bawah kotak*/
+    display: flex;            /*BELOM PAHAM JELAS kenapa harus distyle macam ini*/
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #fff;      /*104.bikin border pada kotak diatas tiap2 text*/
+}
+
+.circle .points{
+    width: 2px;
+    height: 10px;
+    background-color: var(--bg-color);  /*105. BELOM TAU NGAPAIN Ya malah bikin codet garis sikit di boxnya*/
+    position: absolute;
+    border-radius: 3px; 
+    transform: rotate(calc(var(--i)*var(--rot))) translateY(-45px); /*111. ubah *120 jadi var(--rot) GATAU BUAT APA*/
+                /*106. tambah animation lalu bikin @keyframesnya      (Sebelumnya disini trus dipindahin ke .point.marked)*/
+}
+/*115.*/
+.points.marked{
+    animation: glow 0.04s linear forwards;           
+    animation-delay: calc(var(--i)*0.05s);
+}
+
+/* ------------------------------------------117. Portfolio Section css---------------------------------------------- */
+
+.filter-buttons{           /*117. Atur margin, buat ke tengah*/
+    margin: 2rem;
+    text-align: center;
+}
+
+.filter-buttons .button{        /*118. hilangkan bg, outline ,dan border kasih jarak antar huruf, atur ukuran font  */
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: .85rem;
+    font-weight: 600;
+    letter-spacing: .4px;
+    margin-left: 1.3rem;
+    color: var(--text-color);
+}
+
+.filter-buttons .button:hover{
+    color: var(--hover-color);  /*119. kasih hover saat mouseover*/
+}
+
+.portfolio-gallery{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); /*120. GAK PAHAM tapi bikin gambar menyatu dalam 1 kotak jadi 3 bagian*/
+    gap: 2rem;
+}
+
+.port-box{                         /*121. GAK PAHAM Tapi kasih border, gambar jadi 3x2 jumlahnya*/
+    border-radius: 15px;
+    overflow: hidden;
+    background: #292e33;
+    display: flex;
+    grid-template-rows: 1fr auto;
+    align-items: center;
+    border: 2px solid var(--hover-color);
+    box-shadow: var(--neon-box-shadow);
+    position: relative;
+}
+
+.port-image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+.port-image img{       /*122. Perkecil ukuran kotak/gambar TAPI GAMBAR BELUM FULL MASIH DIBAGIAN KIRI KOTAK*/
+    width: 100%;
+    opacity: .5s;
+    height: 100%;
+    transition: .5s;
+}
+
+.port-content{
+    position: absolute;
+    bottom: 0;
+    left: 0;           /*123. Bikin gambar jadi full memenuhi border TAPI MENUTUPI TEXT*/
+    height: 100%;
+    width: 100%;
+    opacity: 0;         /*129. 0 kan value opacity yang sebelumnya dikomentar*/
+    background: linear-gradient(rgba(0,0,0,.2),#12f7ff);
+    display: flex;                  /*124. bikin gambar tidak menutupi text dan bikin efek neon pada gambar*/
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;      
+    text-align: center;
+    transition: 0.5s;
+    padding: 0 2rem;
+}
+
+.port-box:hover .port-content{          /*130. Tambahkan efek hover dengan opacity 1 pada box agar tulisan hanya tampil ketika Mouseover */
+    opacity: 1;
+}
+
+.port-box:hover .port-image img{ 
+    transform: scale(1.1);           /*131. buat efek transform agar saat mouseover, gambar sedikit ngezoom*/
+}
+
+.port-content h3{
+    font-size: 1.5rem;            /*125. atur ukuran font h3 dan p dan marginnya */
+    font-weight: 600;
+}
+
+.port-content p{
+    font-size: .8rem;
+    margin: 5px 0 15px 0;
+}
+
+.port-content a{
+    background: #fff;        /*126. bikin background bulet putih pada logo a*/
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid var(--hover-color);
+    outline: 2px solid #fff;           /*127. bikin outline putih dan border neon*/
+}
+
+.port-content a i{             /*128. atur ukuran dan warna font i*/
+    font-size: 1.3rem;
+    color: var(--secon-bg-color);
+}
+
+/*138. Contact Section */
+
+.contact{
+    background: var(--secon-bg-color);
+}
+
+.contact form{
+    text-align: center;
+    max-width: 50rem;
+    margin: 1rem auto;
+    margin-bottom: 3rem;
+    background: var(--secon-bg-color);
+}
+
+.contact form input,
+.contact form textarea{
+    width: 100%;
+    color: var(--text-color);
+    background: var(--bg-color);  /*139. atur kotakan textarea dan input*/
+    margin-bottom: .8rem;
+    border: none;
+    border-radius: 5px;
+    padding: .7rem;
+}
+
+.contact form textarea{
+    resize: none;
+}
+
+.formBtn{              /*140. atur tombol send message*/
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.formBtn .btn{         /*TUGAS: Ubah bg jadi abu abu*/
+    cursor: pointer;    /*Memberi efek tangan saar mouseover*/
+    font-size: 1rem;
+}
+
+/*////////////////// 141. Footer css ////////////////////////////*/
+
+footer{
+    padding: 1.5rem 10%;    /*142. BELUM TAU PERSIS Diapain tapi ini bikin tulisannya agak ketengah tapi lebih kekiri*/
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer p{
+    color: #bdbdbd;   /*143. Ganti warna text, atur warna bg logo cursor ukuran dll */
+}
+
+footer a{
+    display: inline-flex;
+    justify-content: center;
+    color: var(--text-color);
+    background: var(--hover-color);
+    padding: .6rem;
+    border-radius: 5px;
+}
+
+footer a i{
+    font-size: 1rem;
+    color: var(--secon-bg-color);
+}
+
+/*//// 159. Parallax ////////////////////////////////////////////////////////////////////////////////////////*/
+
+.scroll-scale{    /*160. Atur opacity, jenis transformasi, dan durasi munculnya text atau transisinya*/
+    opacity: 0;
+    transform: scale(.9);
+    transition: all 2s;
+}
+
+.scroll-bottom{
+    opacity: 0;
+    transform: translateY(300px);
+    transition: 3s;
+}
+
+.scroll-top{                           /*163. buat efek untuk .scroll-top*/
+    opacity: 0;
+    transform: translateY(-300px);
+    transition: 3s;
+}
+
+.show-items{
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+
+
+
+
+
+
+/* ------------------------------------------@keyframe---------------------------------------------- */
+
+@keyframes morph{  /*72.Atur Animasinya dengan @keyframe morph{}*/
+    0%,
+    100%{
+        border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%;
+    }
+    30%{
+        border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
+    }
+    60%{
+        border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+    }
+    80%{
+        border-radius: 69% 31% 66% 34% / 21% 30% 70% 79%;
+    }
+}
+
+@keyframes html{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 72%;
+    }
+}
+
+@keyframes figma{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 90%;
+    }
+}
+
+@keyframes javascript{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 80%;
+    }
+}
+
+@keyframes css{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 90%;
+    }
+}
+
+@keyframes glow{
+    0%{
+        background: var(--bg-color);
+        box-shadow: none;
+    }
+    100%{
+        background: var(--hover-color);
+        box-shadow: var(--neon-box-shadow);
+    }
+}
+/*178. Buat @keyframes untuk slideAnimation nya di .navlist a*/
+@keyframes slideAnimation{
+    0%{
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* 150. break point */
+@media(max-width:991px){   /*Penyesuaian margin dan padding website di MaxWidth 991px*/
+    header,
+    header.sticky{
+        padding: 15px 5%;
+    }
+    footer{
+        padding: 15px 5%;
+    }
+    section{
+        padding: 50px 5%;
+    }
+    .navlist a{
+        padding: 8px 15px;
+    }
+    :root{
+        --big-font:2.2rem; /* Ukuran font besar */
+        --normal-font:1.8rem; /* Ukuran font normal (mungkin typo, seharusnya normal-font) */
+        --neon-box-shadow:0 0 .8rem #12f7ff; /* Efek shadow untuk elemen neon */
+        --h2-font:3rem; /* Ukuran font untuk heading h2 */
+        /*151. copas root diatas 2.5rem jadi 2.2rem, 2rem jadi 1.8rem, .5rem jadi .8rem*/ 
+    }
+    .home-content{
+        margin-top: 5rem;
+    }
+    .social-icons{
+        margin-top: 2rem;
+    }
+    
+    
+}
+
+@media(max-width:768px){   /*152. Penyesuaian margin dan padding website di MaxWidth 798px*/
+    #menu-icon{
+        display: block;
+        transition: all .4s ease;
+    }
+    #menu-icon.bx-x{  /*154.bikin icon menu berotasi TAPI BELOM WORK*/
+        transform: rotate(-180deg);
+    }
+    .navlist{
+        display: flex;
+        position: absolute;
+        top: -1000px;
+        right: 0;
+        left: 0;
+        flex-direction: column;
+        background: var(--bg-color);
+        text-align: left;
+        padding: 0 5%;
+        transition: all .45s ease;
+    }
+    .navlist a{
+        display: block;
+        padding-bottom: 1rem;
+        font-size: 1rem;
+    }
+    .navlist.open{  /*155. top: 100% top yang navlist ubah dari 100% jadi -1000px*/
+        top: 100%;
+
+    }
+
+    .home{
+        grid-template-columns: 1fr;  /*157.*/
+    }
+    .home-image{
+        margin-bottom: 5rem;
+    }
+    .liquid-shape{
+        width: 80%;
+        left: 10%;
+        top: 13%;
+    }
+    .about{
+        flex-direction: column-reverse; /*158. ENTAH APA GUNANI WOE*/
+    }
+    .skill-main{
+        grid-template-columns: 1fr;
+    }
+    .filter-buttons{
+        margin: 2.5rem 0;
+    }
+        footer p{
+        font-size: .8rem;
+    }
+}
+
+
+@media(max-width:420px){   /*156. Penyesuaian margin dan padding website di MaxWidth 420px*/
+    html{
+        font-size: 80%;
+    }
+    footer p{
+        font-size: .6rem;
+    }
+    .filter-buttons .button{
+        font-size: .8rem;
+    }
+    .img-about img{
+        width: 300px;
+    }
+    .info-about1,.info-about2,.info-about3{
+        display: none;
+    }
+    .img-about p{
+        font-size: 1rem;
+    }
+}

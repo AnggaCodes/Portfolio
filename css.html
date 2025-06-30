@@ -1,0 +1,43 @@
+<!-- * { ... }
+→ "Aplikin semua aturan di dalam ini ke SEMUA elemen di website."
+
+padding: 0;
+→ "Buang semua jarak dalam (padding) default yang dikasih browser."
+
+margin: 0;
+→ "Buang semua jarak luar (margin) default, biar nggak ada space ga jelas."
+
+box-sizing: border-box;
+→ "Ukuran elemen (lebar/tinggi) sekarang termasuk padding + border, biar nggak nambah lebar sendiri-sendiri."
+*(Misal: lu set width: 100px, tetap 100px meski ada padding/border.)*
+
+list-style: none;
+→ "Hilangkan bullet point (•) di list (<ul>, <li>)."
+
+scroll-behavior: smooth;
+→ "Kalo ada link yang nyroll ke bagian lain di halaman, geraknya jadi halus (kayak efek slow motion)."
+
+text-decoration: none;
+→ "Hilangkan garis bawah (underline) default di link (<a>)." -->
+
+    <!-- Custom Properties (CSS Variables):
+
+Tanda -- adalah sintaks yang digunakan untuk mendefinisikan variabel dalam CSS.
+
+Fitur ini diperkenalkan dalam CSS3 untuk memungkinkan nilai yang dapat digunakan kembali di seluruh stylesheet.
+
+Keuntungannya: mudah diubah secara terpusat dan dapat diakses/dimodifikasi dengan JavaScript.
+
+Selector :root:
+
+:root menargetkan elemen root dokumen (biasanya <html>).
+
+Dengan mendeklarasikan variabel di :root, variabel tersebut menjadi global dan dapat diakses dari mana saja dalam stylesheet. -->
+
+.kecilkan{
+    width: 300px; /* Sesuaikan ukuran */
+  height: auto;
+  float: left; /* Mengapung ke kiri */
+  margin-right: 20px; /* Jarak antara gambar dan teks */
+  shape-outside: margin-box; /* Untuk text wrapping yang lebih rapi */
+}
