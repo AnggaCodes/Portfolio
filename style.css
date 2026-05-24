@@ -9,6 +9,7 @@
   list-style: none;
   scroll-behavior: smooth;
   text-decoration: none;
+  border: red 1px solid; /*buat border merah untuk ngecek jarak antar elemen*/
 }
 :root {
   /*4. bikin VARIABLE GLOBAL*/
