@@ -46,6 +46,7 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: var(--bg-color); /*5. ubah warna text dan background*/
   color: var(--text-color);
+  overflow-x: hidden;
 }
 /* pemaggilan variable */
 
@@ -149,7 +150,7 @@ section {
 }
 .kecilkan {
   /* BELOM PAHAM BETUL INI*/
-  width: 400px; /* Sesuaikan ukuran */
+  width: min(100%, 400px); /* Sesuaikan ukuran */
   height: auto;
   float: left; /* Mengapung ke kiri */
   margin-right: 20px; /* Jarak antara gambar dan teks */
@@ -197,9 +198,10 @@ section {
   display: inline-flex;
   justify-content: space-between;
   align-items: center; /*32. atur style class info box*/
-  width: 400px;
+  width: min(100%, 400px);
   margin: 1rem 0 2rem;
   padding: 0.5rem 1rem;
+  gap: 1rem;
 }
 .info-box h5 {
   font-weight: 600;
@@ -216,9 +218,10 @@ section {
   /*35. */
   display: flex;
   justify-content: space-between;
-  width: 400px;
+  width: min(100%, 400px);
   height: 45px;
   margin: 0 0 2rem;
+  gap: 1rem;
 }
 
 .btn-box .btn {
@@ -226,7 +229,7 @@ section {
   display: inline-flex; /*36. */
   justify-content: center;
   align-items: center;
-  width: 150px;
+  width: calc(50% - 0.5rem);
   height: 100%;
   background: var(--hover-color);
   color: var(--bg-color);
@@ -280,8 +283,9 @@ section {
   margin-top: 8rem; /*45. Rapikan dan atur jarak antar social icon*/
   display: flex;
   justify-content: space-between;
-  width: 220px;
+  width: min(100%, 220px);
   height: 40px;
+  gap: 0.5rem;
 }
 
 .social-icons a {
@@ -950,6 +954,7 @@ footer a i {
   }
   .home-content {
     margin-top: 5rem;
+    width: 100%;
   }
   .social-icons {
     margin-top: 2rem;
@@ -993,6 +998,25 @@ footer a i {
   }
   .home-image {
     margin-bottom: 5rem;
+  }
+  .info-box {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .btn-box {
+    width: 100%;
+    flex-direction: column;
+    height: auto;
+  }
+  .btn-box .btn {
+    width: 100%;
+    height: 45px;
+  }
+  .social-icons {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
   }
   .liquid-shape {
     width: 80%;
